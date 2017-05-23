@@ -3,7 +3,7 @@ ___author__ = 'Bar Adar'
 import csv
 from collections import defaultdict
 
-
+MAX_TYPO_MISTAKES = 1
 dict = {}
 
 """
@@ -22,9 +22,17 @@ def compare_names_to_full_name(first, second, full):
     if len(full) != len(second) + 1: #bacuse Jack Bauer is not the same person as Jake Bauer Smith
         return 2
     #the code below handles the case the name is written in a different order
-    if first[0] in full:
+    found = 0
+    for name_in_full in full:
+        if is_names_the_same_deep(first[0], name_in_full):
+            found +=1
+    if found >=1:
+        found = 0
         for last_name in second:
-            if last_name not in full:
+            for name_in_full in full:
+                if is_names_the_same_deep(last_name, name_in_full):
+                    found += 1
+            if found < 1: #not found
                 return 2
     else:
         return 2
@@ -35,8 +43,8 @@ This function checks if tow names are equal. It includes middle names.
 Note - I considerate middle names in the comparison of first names because for example Jake David is not the same person as Jake Ben.
 
 Input:
-    first - the first name as a string.
-    second - the second name as a string.
+    first - the first name as a list.
+    second - the second name as a list.
     is_first_name - do we check a first name or a last name. (True or False).
 
 Output:
@@ -53,7 +61,7 @@ def compare_names(first, second, is_first_name):
             return 2
         names_len = l1
     for cur_name in xrange(names_len):
-        if first[cur_name] != second[cur_name]:
+        if not is_names_the_same_deep(first[cur_name], second[cur_name]):
             return 2
     return 1
 
@@ -94,6 +102,27 @@ def parsing_name(full_name):
 
 
 """
+This function checks if two names are the same, considering typo mistakes
+
+Input:
+    first_name - first name to check, as a string
+    second_name - second name to check, as a string
+
+Output:
+    True if there is a typo mistake, else False.
+"""
+def is_names_the_same_deep(first_name, second_name):
+    #typo mistakes can only be in the billing and the shipping
+    count_mistakes = 0
+    if len(first_name) != len(second_name):
+        return False
+    for ch in xrange(len(first_name)):
+        if first_name[ch] != second_name[ch]:
+            count_mistakes += 1
+    return True if count_mistakes <= MAX_TYPO_MISTAKES else False
+
+
+"""
 This function counts how many unique names (different people) threre are in the tranzaction.
 
 Input:
@@ -106,10 +135,8 @@ Input:
 Output:
     The number of unique names.
 """
-
 def countUniqueNames(billFirstName,billLastName,shipFirstName,shipLastName,billNameOnCard):
     global dict
-
     #for parsing the nicknames only once
     if not countUniqueNames.is_dict_initialized:
         dict = nicknames_configure("nicknames.csv")
@@ -163,4 +190,3 @@ def nicknames_configure(path):
             value = value.strip().lower()
             nicks_dict[key].append(value) #appending nickname to the original name
     return nicks_dict
-
