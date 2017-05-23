@@ -55,6 +55,12 @@ class TestFindingPeople(unittest.TestCase):
     def test_equal_not_case_sensetive(self):
         self.assertEqual(1, countUniqueNames("deborah", "Egli", "DeboRAh", "EGLI", "DeboraH EgLi"))
 
+    def test_equal_with_typo_mistakes_firstScenerio(self):
+        self.assertEqual(1, countUniqueNames("Gab", "Egli", "Gad", "Egli", "Gab Egli"))
+
+    def test_equal_with_typo_mistakes_secondScenerio(self):
+        self.assertEqual(2, countUniqueNames("Gab", "Eglie", "Gab", "Egni", "Gab Egli")) #Egni Egli is a typo mistake
+
 
 if __name__ == '__main__':
     unittest.main()
