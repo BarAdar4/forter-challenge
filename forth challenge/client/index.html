@@ -1,0 +1,91 @@
+<!doctype html>
+<html ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<title>NodeJS Skeleton</title>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+		<!-- Load js dep -->
+		<script src="js/lib/angular.min.js"></script>
+		<script src="js/app.js"></script>
+
+		<!-- Some css -->
+		<style type="text/css">
+			body, html {
+				height: 100%;
+				font-family: "Raleway";
+			}
+			.bg {
+				/* The image used */
+				background-image: url("forestbridge.jpg");
+
+				min-height: 100%;
+				background-position: center;
+				background-size: cover;
+			}
+			.container {
+				text-align: center;
+				font-size: 30px;
+				font-family: 'Raleway';
+				color: white;
+
+			}
+			.funny-question {
+				padding: 50px 0;
+			}
+			.funny-answer {
+				padding: 20px 0;
+			}
+			.button {
+				padding: 10px 0;
+				background-color: white;
+				border: hidden;
+				cursor: pointer;
+				text-decoration: none;
+				padding: 3px 32px;
+
+			}
+			.title {
+				padding: 5px 0;
+				text-align: center;
+				font-size: 100px;
+				font-family: 'Lobster';
+				color: white;
+			}
+		</style>
+	</head>
+
+	<!-- appController -->
+	<body ng-controller="appController">
+
+	<div class="bg">
+		<div class="w3-display-topleft w3-padding-large w3-xlarge w3-text-white">
+			Written by Bar Adar
+		</div>
+		<div class="title">
+			<p>Chat Robot</p>
+		</div>
+		<hr class="w3-border-grey" style="margin:auto;width:40%">
+		<div class="container">
+			<div class="funny-question">
+					<span>
+						Question: <input ng-model="question">
+					</span>
+			</div>
+
+			<button class="button" ng-click="ques(question)">ask</button>
+
+			<div class="funny-answer">
+					<span>
+						Answer: {{answer.answer}}
+					</span>
+			</div>
+		</div>
+	</div>
+	</body>
+
+
+
+</html>
