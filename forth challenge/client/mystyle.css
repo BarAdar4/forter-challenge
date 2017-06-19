@@ -1,0 +1,41 @@
+body, html {
+    height: 100%;
+    font-family: "Raleway";
+}
+.bg {
+    /* The image used */
+    background-image: url("forestbridge.jpg");
+
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+.container {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Raleway';
+    color: white;
+
+}
+.funny-question {
+    padding: 50px 0;
+}
+.funny-answer {
+    padding: 20px 0;
+}
+.button {
+    padding: 10px 0;
+    background-color: white;
+    border: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 3px 32px;
+
+}
+.title {
+    padding: 5px 0;
+    text-align: center;
+    font-size: 100px;
+    font-family: 'Lobster';
+    color: white;
+}
