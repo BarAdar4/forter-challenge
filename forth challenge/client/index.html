@@ -57,6 +57,13 @@
 				padding: 10px 0;
 				font-size: 25px;
 			}
+			.refresh-button{
+				font-size: 20px;
+				background-color: white;
+				border: hidden;
+				cursor: pointer;
+				padding: 1px 25px;
+			}
 		</style>
 
 
@@ -73,8 +80,11 @@
 		</div>
 		<hr class="w3-border-grey" style="margin:auto;width:40%">
 		<div class="container">
+			<button class="refresh-button" ng-click="show()">refresh</button>
 			<div class = "chat-box">
-				<textarea id="chat_box" rows = 8>{{data}}</textarea>
+
+				<textarea id="chat_box" rows = 9 cols=40>{{data}}</textarea>
+
 			</div>
 
 			<div class="funny-question">
@@ -84,21 +94,18 @@
 					</span>
 				<button class="button" ng-click="ques(question)">ask</button>
 			</div>
-
-			<div class="funny-answer">
-					<span>
-						Answer: {{answer.answer}}
-					</span>
-			</div>
-			<button class="button" ng-click="show()">refresh</button>
-
 		</div>
+
 
 	</form>
 
 	<script>
         function cliking(text){
             document.getElementById("chat_box").value = document.getElementById("chat_box").value + text + "\n";
+        }
+
+        function showQuestion() {
+            document.getElementById("chat_box").value = document.getElementById("chat_box").value + last_question.question + ": " + last_question.answer + "\n" + "\n";
         }
 	</script>
 

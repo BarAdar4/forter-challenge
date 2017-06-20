@@ -9,7 +9,7 @@ app.factory('dataServ', ['$http',function($http) {
         },
 
 		getAnswer : function (question) {
-        	return $http.get('/try/' + question)
+        	return $http.get('/ask/' + question)
         },
 
         getData : function() {
@@ -17,6 +17,7 @@ app.factory('dataServ', ['$http',function($http) {
 		}
     }
 }]);
+
 
 // App controller
 app.controller('appController', ['$scope','dataServ', function($scope, Data) {
@@ -30,6 +31,7 @@ app.controller('appController', ['$scope','dataServ', function($scope, Data) {
 		Data.getAnswer(question)
 			.success(function (resp) {
 				$scope.answer = resp
+				$scope.data = $scope.data + resp.question +": " + resp.answer + "\n" + "\n";
             })
     }
 
@@ -41,7 +43,7 @@ app.controller('appController', ['$scope','dataServ', function($scope, Data) {
 					final = final +resp[myKeyin].question;
                     final = final + ": ";
                     final = final +resp[myKeyin].answer;
-                    final = final + "\n";
+                    final = final + "\n" +"\n";
 				}
 
 				$scope.data = final
