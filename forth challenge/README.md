@@ -1,23 +1,8 @@
-# Skeleton app with Node.js + express + angular
+# The Forth Challenge - Chat Bot
 
-## Requirements
+I developed a chat room. You can ask the bot questions and it will answer you. 
 
-- [Node and npm](http://nodejs.org)
+When you click the "Refresh" button, you will be synced with the bot's history. It means you'll see all the questions the bot has been asked, and it's answers.
 
-## Installation
-
-1. `git clone git@github.com:forter/node-skeleton.git`
-2. `cd node-skeleton`
-3. `npm install`
-3. `node app.js`
-4. Go to `http://localhost:3000`
-5. Enjoy life.
-
-## Usage
-
-Add routes to server in: `server/routes.js`
-
-Main angular module: `client/app.js`
-
-Main html file: `client/index.html`
-
+P.S -
+The bot has a tiny attitude problem. Be aware :)
